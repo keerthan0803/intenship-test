@@ -44,6 +44,33 @@ body{font-family:var(--ff-sans);background:#fff;color:var(--accent)}
 	box-shadow:0 6px 18px rgba(0,0,0,0.25);
 }
 .mobile-pill{display:none}
+.mobile-pill{
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	appearance:none;
+	border: none;
+	background: rgba(0,0,0,0.85);
+	color: #efe9c8;
+	display:inline-flex;
+	align-items:center;
+	gap:10px;
+	padding:8px 14px;
+	border-radius:28px;
+	box-shadow:0 6px 18px rgba(0,0,0,0.25);
+	border:1px solid rgba(255,255,255,0.06);
+	cursor:pointer;
+	font-weight:700;
+	font-size:15px;
+	min-height:40px;
+	min-width:84px;
+	line-height:1;
+}
+.mobile-pill::-moz-focus-inner{border:0;padding:0}
+.mobile-pill .mobile-label{font-weight:600;color:#efe9c8;margin-left:6px}
+.mobile-pill .mobile-icon{margin-left:8px;font-size:18px;color:#efe9c8}
+.mobile-pill .flower-icon{width:28px;height:28px;padding:6px;border-radius:999px;background:rgba(255,255,255,0.04);display:inline-flex;align-items:center;justify-content:center}
+.mobile-pill:focus{outline:none;box-shadow:0 6px 18px rgba(0,0,0,0.32), 0 0 0 3px rgba(255,214,0,0.08)}
+.mobile-pill, .mobile-pill *{ -webkit-user-select:none; -moz-user-select:none; user-select:none }
 .nav-pill a{color:#efe9c8;text-decoration:none;font-weight:600;padding:6px 10px;border-radius:6px;font-size:16px;letter-spacing:0.02em}
 .nav-pill a:hover{opacity:1;transform:translateY(-1px)}
 .nav-pill a{transition:all .18s ease}
@@ -69,11 +96,23 @@ body{font-family:var(--ff-sans);background:#fff;color:var(--accent)}
 	/* show mobile pill, hide desktop pill */
 	.nav-pill{display:none}
 	.mobile-pill{display:inline-flex}
-	.mobile-menu{position:fixed;left:12px;right:12px;top:72px;background:linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.45));padding:18px;border-radius:12px;color:#fff;box-shadow:0 8px 30px rgba(0,0,0,0.35);z-index:140}
+	/* style mobile menu to match desktop pill look */
+	.mobile-menu{position:fixed;left:12px;right:12px;top:72px;background:rgba(0,0,0,0.85);padding:12px 14px;border-radius:28px;color:#efe9c8;box-shadow:0 12px 40px rgba(0,0,0,0.35);z-index:140;border:1px solid rgba(255,255,255,0.04)}
 	.mobile-menu[hidden]{display:none}
-	.mobile-menu a{display:block;padding:12px 6px;text-align:center;color:#efe9c8;text-decoration:none;font-weight:700}
-	.mobile-menu .mobile-cta{background:var(--cta-bg);color:#111;padding:12px;border-radius:10px;margin-top:8px;display:block}
+	.mobile-menu a{display:block;padding:10px 6px;text-align:center;color:#efe9c8;text-decoration:none;font-weight:700;border-radius:8px}
+	.mobile-menu a:not(.mobile-cta){background:transparent;margin:6px 0}
+	/* yellow CTA inside mobile menu should match desktop CTA */
+	.mobile-menu .mobile-cta{display:block;background:var(--cta-bg);color:#111;padding:10px;border-radius:18px;margin-top:8px;font-weight:800;box-shadow:inset 0 -3px 0 rgba(0,0,0,0.14);border:1px solid rgba(0,0,0,0.28)}
+	/* center contents and slightly increase touch targets */
+	.mobile-menu{display:flex;flex-direction:column;align-items:stretch}
 }
 
 .container{max-width:var(--max-width);margin:0 auto;padding:40px}
+
+/* Ensure correct pill visibility by screen size */
+@media (min-width:641px){
+	/* desktop: hide mobile pill, ensure nav-pill is visible */
+	.mobile-pill{display:none !important}
+	.nav-pill{display:flex !important}
+}
 
