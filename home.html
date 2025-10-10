@@ -5,6 +5,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Daniel Sun — Portfolio (static)</title>
 		<link rel="stylesheet" href="style.css" />
+		<!-- Display font for big headline -->
+		<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<header class="site-hero">
@@ -45,17 +47,44 @@
 			<div class="hero-inner">
 				<div class="hero-copy">
 					<p class="eyebrow">Howdy! Meet your trusted design partner,</p>
-					<h2 class="sub">crafting strong brands for SaaS and Web3.</h2>
+					<p class="sub">crafting strong brands for SaaS and Web3.</p>
 				</div>
 
-				<h1 class="big-name">DANIEL<br />SUN</h1>
+				<h1 class="big-name">
+					<span class="char" data-image="assets/images/letters/D.jpg" tabindex="0" aria-label="D">D</span>
+					<span class="char" data-image="assets/images/letters/A.jpg" tabindex="0" aria-label="A">A</span>
+					<span class="char" data-image="assets/images/letters/N-2.jpg" tabindex="0" aria-label="N">N</span>
+					<span class="char" data-image="assets/images/letters/I.jpg" tabindex="0" aria-label="I">I</span>
+					<span class="char" data-image="assets/images/letters/E.jpg" tabindex="0" aria-label="E">E</span>
+					<span class="char" data-image="assets/images/letters/L.jpg" tabindex="0" aria-label="L">L</span>
+					&nbsp;
+					<span class="char" data-image="assets/images/letters/S.jpg" tabindex="0" aria-label="S">S</span>
+					<span class="char" data-image="assets/images/letters/U.jpg" tabindex="0" aria-label="U">U</span>
+					<span class="char" data-image="assets/images/letters/N.jpg" tabindex="0" aria-label="N">N</span>
+				</h1>
 			</div>
 		</header>
+
+		<!-- Latest work section (added) -->
+		<section class="latest-work">
+			<div class="latest-inner container">
+				<p class="latest-meta">from 2020 'til today</p>
+				<h2 class="latest-title">MY LATEST WORK</h2>
+				<img src="assets/images/turtle.svg" alt="turtle" class="cases-icon" />
+				<p class="cases-note hero-case">NEW CASES ARE ON THE WAY, SLOWLY BUT SURELY 😅</p>
+				<p class="btn-hint">Tap this 'tiny' button to highlight your product =)</p>
+				<button class="big-connect-btn" aria-label="Connect">Connect</button>
+			</div>
+		</section>
 
 		<main class="container">
 			<!-- the rest of the site would go here -->
 		</main>
-		<script src="assets/nav.js"></script>
+		<!-- GSAP animation library -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-GjGm+2v6ZzQ3tV6y9QhKzQfQ1fR8u2pJXk1j1FQ9Z6x3s6yWvR2n5F0e8pQ4Z3lK1Y2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="assets/gsap.js"></script>
+			<script src="assets/letters.js"></script>
+			<script src="assets/nav.js"></script>
 	</body>
 </html>
 

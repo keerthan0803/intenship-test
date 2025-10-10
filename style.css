@@ -28,7 +28,7 @@ body{font-family:var(--ff-sans);background:#fff;color:var(--accent)}
 	z-index:0;
 }
 
-.topnav{position:fixed;left:0;right:0;top:20px;height:72px;display:flex;align-items:center;justify-content:center;z-index:120;padding:0 32px}
+.topnav{position:fixed;left:0;right:0;top:24px;height:64px;display:flex;align-items:center;justify-content:center;z-index:120;padding:0 32px}
 .topnav .nav-center{display:flex;gap:18px;align-items:center;position:relative;width:100%;}
 .nav-pill{
 	position:absolute;
@@ -79,20 +79,37 @@ body{font-family:var(--ff-sans);background:#fff;color:var(--accent)}
 .flower-icon svg{display:block}
 
 
-.hero-inner{position:relative;z-index:10;display:flex;align-items:flex-start;gap:20px;padding:120px 60px}
-.hero-copy{max-width:640px}
-.eyebrow{font-size:22px;color:var(--muted);margin:0 0 8px}
-.sub{font-size:28px;margin:0 0 18px;color:var(--muted)}
+.hero-inner{position:relative;z-index:10;display:flex;flex-direction:column;align-items:flex-start;gap:20px;padding:140px 60px}
+.hero-copy{max-width:100%;margin-bottom:12px}
+.eyebrow{font-family: var(--ff-sans); font-size:22px;color:var(--muted);margin:0 0 16px;line-height:1.25}
+.sub{font-family: var(--ff-sans); font-size:28px;margin:0 0 18px;color:var(--muted);line-height:1.2}
 
-.big-name{font-size:200px;line-height:0.82;margin:0;font-weight:900;letter-spacing:2px;color:#000}
+.big-name{font-family: 'Anton', sans-serif; font-size: clamp(110px, 20vw, 300px); line-height:0.82;margin:0;margin-top:6px;font-weight:400;letter-spacing:2px;color:#000; width:100%;}
+.hero-inner{align-items:flex-start;}
+
+/* Per-letter interactive images */
+.big-name{white-space:nowrap;overflow:visible;display:inline-flex;gap:0;align-items:baseline;flex-wrap:nowrap}
+.big-name .char{display:block;position:relative;cursor:pointer;padding:0;margin:0;transition:transform .12s ease,color .12s ease;letter-spacing:0}
+.big-name .char:focus{outline:none;box-shadow:0 6px 18px rgba(0,0,0,0.12);transform:translateY(-3px)}
+.big-name .char:hover{transform:translateY(-6px)}
+
+/* viewer that shows the letter photo */
+.letter-viewer{position:fixed;pointer-events:none;z-index:220;opacity:0;transition:opacity .18s ease,transform .18s ease}
+.letter-viewer.visible{opacity:1;pointer-events:auto}
+.letter-viewer img{display:block;width:220px;height:220px;object-fit:cover;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.35)}
+
+/* small screens: make viewer full-width modal-like */
+@media (max-width:640px){
+	.letter-viewer img{width:86vw;height:86vw;border-radius:12px}
+}
 
 @media (max-width:1200px){
 	.big-name{font-size:140px}
-	.hero-inner{padding:100px 32px}
+	.hero-inner{padding:130px 32px}
 }
 @media (max-width:640px){
 	.big-name{font-size:72px}
-	.hero-inner{padding:80px 20px}
+	.hero-inner{padding:110px 20px}
 	/* show mobile pill, hide desktop pill */
 	.nav-pill{display:none}
 	.mobile-pill{display:inline-flex}
@@ -108,6 +125,34 @@ body{font-family:var(--ff-sans);background:#fff;color:var(--accent)}
 }
 
 .container{max-width:var(--max-width);margin:0 auto;padding:40px}
+
+/* Latest work section styling */
+.latest-work{padding:50px 0 70px;background:transparent}
+.latest-inner{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px 0}
+.latest-meta{font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-style:italic;color:var(--muted);text-align:center;margin:0 0 10px;font-size:20px}
+.latest-title{font-family:'Anton',sans-serif;font-size:clamp(54px,6.5vw,120px);margin:0 0 18px;letter-spacing:2px}
+
+.btn-hint{font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-style:italic;color:var(--muted);text-align:center;margin:6px 0 18px}
+.cases-icon{width:84px;height:84px;margin:10px auto 6px;display:block}
+.cases-note{font-family:var(--ff-sans);color:var(--muted);text-align:center;margin:6px 0 8px;font-size:18px}
+.cases-note.hero-case{font-family:'Anton',sans-serif;font-size:clamp(26px,4.6vw,56px);color:#000;margin:8px 0 10px;letter-spacing:1px}
+.big-connect-btn{display:inline-block;background:#1f1f1f;color:#fff;padding:28px 60px;border-radius:48px;border:8px solid rgba(255,255,255,0.85);box-shadow:0 18px 30px rgba(0,0,0,0.25), inset 0 -8px 0 rgba(0,0,0,0.16);font-size:44px;font-weight:700;cursor:pointer;position:relative;z-index:210;transition:transform .18s ease,box-shadow .18s ease;--glow:0}
+.big-connect-btn::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:120%;height:120%;border-radius:56px;box-shadow:0 20px 80px 20px rgba(255,210,0,var(--glow));opacity:1;transition:box-shadow .18s ease;pointer-events:none}
+.big-connect-btn:focus{outline:none}
+.big-connect-btn:hover{transform:translateY(-6px)}
+.big-connect-btn:active{transform:translateY(-3px)}
+
+/* CSS fallback: force a strong glow when hovered/focused/active so it's visible even if GSAP fails */
+.big-connect-btn:hover,
+.big-connect-btn:focus,
+.big-connect-btn:active{
+	--glow:0.9;
+}
+
+@media (max-width:640px){
+	.big-connect-btn{padding:18px 34px;font-size:28px;border-radius:36px}
+}
+
 
 /* Ensure correct pill visibility by screen size */
 @media (min-width:641px){
